@@ -17,7 +17,7 @@
 | mode | keymap | effect |
 | --- | --- | --- |
 | insert | Ctrl + c | esc |
-| normal | \<leader\>s | being substitution (:%s) with current word + /gc |
+| normal | \<leader\>s | begin substitution (:%s) with current word + /gc |
 | view | J | move code down once |
 | view | K | move code up once |
 | normal | J | bring code from below line up |
@@ -28,7 +28,7 @@
 | normal | \<leader\>f | format code in file |
 | insert | Ctrl + p | autocomplete move up in list |
 | insert | Ctrl + n | autocomplete move down in list |
-| insert | Ctrl + p | autocomplete select in list |
+| insert | Ctrl + y | autocomplete select in list |
 | insert | gd | go to definition |
 | normal | K | detail box |
 | normal | \<leader\>vd | view full lint message |
