@@ -13,3 +13,32 @@
 | normal | Ctrl + k | jump to 2nd harpoon file |
 | normal | Ctrl + l | jump to 3rd harpoon file |
 | normal | Ctrl + ; | jump to 4th harpoon file |
+### coding
+| mode | keymap | effect |
+| --- | --- | --- |
+| insert | Ctrl + c | esc |
+| normal | \<leader\>s | being substitution (:%s) with current word + /gc |
+| view | J | move code down once |
+| view | K | move code up once |
+| normal | J | bring code from below line up |
+| normal | \<leader\>Y | copy to system clipboard |
+#### lsp
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>f | format code in file |
+| insert | Ctrl + p | autocomplete move up in list |
+| insert | Ctrl + n | autocomplete move down in list |
+| insert | Ctrl + p | autocomplete select in list |
+| insert | gd | go to definition |
+| normal | K | detail box |
+| normal | \<leader\>vd | view full lint message |
+| normal | [d | next lint message |
+| normal | ]d | previous lint message |
+| normal | \<leader\>vca | view code actions |
+| normal | \<leader\>vrr | view references |
+| normal | \<leader\>vrn | rename |
+| insert | Ctrl + h | view calling function's information |
+### undo
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>u | view undo tree |
