@@ -17,11 +17,13 @@
 | mode | keymap | effect |
 | --- | --- | --- |
 | insert | Ctrl + c | esc |
-| normal | \<leader\>s | begin substitution (:%s) with current word + /gc |
+| normal | \<leader\>sg | begin substitution (:%s) with current word + /g |
+| normal | \<leader\>sc | begin substitution (:%s) with current word + /gc |
 | view | J | move code down once |
 | view | K | move code up once |
 | normal | J | bring code from below line up |
 | normal | \<leader\>Y | copy to system clipboard |
+| visual | \<leader\>pp | copy to system clipboard |
 #### lsp
 | mode | keymap | effect |
 | --- | --- | --- |
