@@ -32,3 +32,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>sg", [[:%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>]])
 vim.keymap.set("n", "<leader>sc", [[:%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>/", "/<C-r><C-w><ENTER>")
+
+vim.keymap.set("n", "<leader>H", ":Hex<ENTER>")
+vim.keymap.set("n", "<leader>V", ":Vex<ENTER>")
