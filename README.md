@@ -7,6 +7,8 @@
 | normal | \<leader\>pf | search by words in file path |
 | normal | \<leader\>pg | search by words in file path (only git tracked files) |
 | normal | \<leader\>ps | grep search (top directory is where nvim started) |
+| normal | \<leader\>H | Horizontal explorer (:Hex) |
+| normal | \<leader\>V | Vertical explorer (:Vex) |
 | normal | Ctrl + m | open harpoon menu |
 | normal | Ctrl + a | add file to harpoon menu |
 | normal | Ctrl + j | jump to 1st harpoon file |
@@ -24,6 +26,7 @@
 | normal | J | bring code from below line up |
 | normal | \<leader\>Y | copy to system clipboard |
 | visual | \<leader\>pp | copy to system clipboard |
+| normal | \<leader\>/ | begin search (/) with current word |
 #### lsp
 | mode | keymap | effect |
 | --- | --- | --- |
