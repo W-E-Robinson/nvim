@@ -1,5 +1,8 @@
-# Inspired by ThePrimeagen's [video](https://www.youtube.com/watch?v=w7i4amO_zaE) and [repo](https://github.com/ThePrimeagen/init.lua), with some personal modifications.
-## leader = " " (space)
+# nvim
+
+This repo contains my Neovim configuration within `~/.config/nvim`, based on this [repo](https://github.com/ThePrimeagen/init.lua).
+
+### leader = " " (space)
 ### navigation
 | mode | keymap | effect |
 | --- | --- | --- |
@@ -18,7 +21,8 @@
 ### coding
 | mode | keymap | effect |
 | --- | --- | --- |
-| insert | Ctrl + c | esc |
+| normal | Ctrl + c | write all and quit (:wqa) |
+| insert | Ctrl + c | write all and quit (:wqa) |
 | normal | \<leader\>sg | begin substitution (:%s) with current word + /g |
 | normal | \<leader\>sc | begin substitution (:%s) with current word + /gc |
 | view | J | move code down once |
@@ -36,9 +40,10 @@
 | insert | Ctrl + y | autocomplete select in list |
 | insert | gd | go to definition |
 | normal | K | detail box |
-| normal | \<leader\>vd | view full lint message |
-| normal | [d | next lint message |
-| normal | ]d | previous lint message |
+| normal | \<leader\>vd | view full error message |
+| normal | [d | next error message |
+| normal | ]d | previous error message |
+| normal | \<leader\>cd | see all errors in quickfix list |
 | normal | \<leader\>vca | view code actions |
 | normal | \<leader\>vrr | view references |
 | normal | \<leader\>vrn | rename |
