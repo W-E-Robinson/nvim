@@ -3,7 +3,7 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
   'tsserver',
-  'eslint',
+  --'eslint',
   'rust_analyzer',
   'html',
   'dockerls',
