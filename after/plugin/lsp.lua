@@ -6,6 +6,7 @@ lsp.ensure_installed({
   --'eslint',
   'rust_analyzer',
   'html',
+  'htmx',
   'dockerls',
   'cssls',
   'jsonls',
@@ -14,6 +15,7 @@ lsp.ensure_installed({
   'lua_ls',
   'dockerls',
   'biome',
+  'pylsp',
   'docker_compose_language_service',
 })
 
