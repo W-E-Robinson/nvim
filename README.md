@@ -31,6 +31,7 @@ This repo contains my Neovim configuration within `~/.config/nvim`, based on thi
 | normal | \<leader\>Y | copy to system clipboard |
 | visual | \<leader\>pp | copy to system clipboard |
 | normal | \<leader\>/ | begin search (/) with current word |
+| insert | Ctrl + f | writes open and closed curly braces and places cursor on line between
 #### lsp
 | mode | keymap | effect |
 | --- | --- | --- |
