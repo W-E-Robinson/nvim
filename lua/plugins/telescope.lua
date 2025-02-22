@@ -5,21 +5,21 @@ return {
     branch = "0.1.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
-	"nvim-treesitter/nvim-treesitter"
+        "nvim-treesitter/nvim-treesitter"
     },
 
     config = function()
-      require('telescope').setup({
-        defaults = {
-          layout_strategy = "vertical",
-          layout_config = {
-            vertical = {
-              width = 0.9,
-              height = 0.9,
+        require('telescope').setup({
+            defaults = {
+                layout_strategy = "vertical",
+                layout_config = {
+                    vertical = {
+                        width = 0.9,
+                        height = 0.9,
+                    },
+                },
             },
-          },
-        },
-      })
+        })
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
