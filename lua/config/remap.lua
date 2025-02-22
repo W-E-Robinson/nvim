@@ -36,10 +36,6 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-vim.keymap.set("n", "<leader>mir", function()
+vim.keymap.set("n", "<leader>mir", function() -- NOTE: check works
     require("cellular-automaton").start_animation("make_it_rain")
-end)
-
-vim.keymap.set("n", "<leader>gol", function()
-    require("cellular-automaton").start_animation("game_of_life")
 end)
