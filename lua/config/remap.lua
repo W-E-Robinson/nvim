@@ -39,3 +39,6 @@ end)
 vim.keymap.set("n", "<leader>mir", function()
     require("cellular-automaton").start_animation("make_it_rain")
 end)
+
+vim.keymap.set('n', '<leader>mpo', '<cmd>PeekOpen<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>mpc', '<cmd>PeekClose<CR>', { noremap = true, silent = true })
