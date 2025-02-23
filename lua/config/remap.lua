@@ -12,15 +12,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-c>", ":wqa<ENTER>")
 vim.keymap.set("i", "<C-c>", ":wqa<ENTER>")
 
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("v", "<leader>pp", "\"*y")
-
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("i", "<C-f>", "<Esc>A<Space>{<Esc>o}<Esc>O")
 
@@ -35,10 +29,3 @@ vim.keymap.set("n", "<leader>V", ":Vex<ENTER>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
-vim.keymap.set("n", "<leader>mir", function()
-    require("cellular-automaton").start_animation("make_it_rain")
-end)
-
-vim.keymap.set('n', '<leader>mpo', '<cmd>PeekOpen<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>mpc', '<cmd>PeekClose<CR>', { noremap = true, silent = true })
