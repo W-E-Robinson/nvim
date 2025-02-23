@@ -67,6 +67,11 @@
 | --- | --- | --- |
 | normal | \<leader\>u | view undo tree |
 
+### screenkey
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>sk | toggle screenkey |
+
 ### cellular-automaton
 | mode | keymap | effect |
 | --- | --- | --- |

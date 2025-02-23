@@ -10,7 +10,7 @@ return {
                 col = vim.o.columns - 1,
                 relative = "editor",
                 anchor = "SE",
-                width = 75,
+                width = vim.o.columns,
                 height = 1,
                 border = "single",
                 title = "Screenkey",
