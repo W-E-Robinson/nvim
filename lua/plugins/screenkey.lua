@@ -32,6 +32,8 @@ return {
                 ["<DEL>"] = "Del",
                 ["<INSERT>"] = "Ins",
                 ["CTRL"] = "Ctrl",
+                ["<LEFT>"] = "Le",
+                ["<RIGHT>"] = "Ri",
             },
         })
 
