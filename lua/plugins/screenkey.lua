@@ -10,7 +10,7 @@ return {
                 col = vim.o.columns - 1,
                 relative = "editor",
                 anchor = "SE",
-                width = vim.o.columns,
+                width = 50,
                 height = 1,
                 border = "single",
                 title = "Screenkey",
@@ -20,7 +20,7 @@ return {
                 noautocmd = false,
             },
             compress_after = 3,
-            clear_after = 10,
+            clear_after = 5,
             show_leader = false,
             group_mappings = true,
             keys = {
@@ -32,6 +32,8 @@ return {
                 ["<DEL>"] = "Del",
                 ["<INSERT>"] = "Ins",
                 ["CTRL"] = "Ctrl",
+                ["<LEFT>"] = "Le",
+                ["<RIGHT>"] = "Ri",
             },
         })
 
