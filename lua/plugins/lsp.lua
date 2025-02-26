@@ -5,9 +5,14 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
     },
 
     config = function()
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+        local capabilities = cmp_nvim_lsp.default_capabilities()
+
         local function set_lsp_keymaps(bufnr)
             local opts = { buffer = bufnr, silent = true, remap = false }
             vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
@@ -40,12 +45,14 @@ return {
                                     },
                                 },
                             },
+                            capabilities = capabilities,
                             on_attach = function(_, bufnr)
                                 set_lsp_keymaps(bufnr)
                             end,
                         })
                     else
                         require("lspconfig")[server_name].setup({
+                            capabilities = capabilities,
                             on_attach = function(_, bufnr)
                                 set_lsp_keymaps(bufnr)
                             end,
