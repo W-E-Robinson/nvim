@@ -56,6 +56,14 @@
 | normal | \<leader\>vrn | rename |
 | normal | Ctrl + h | view calling function's information |
 
+### nvim-cmp
+| mode | keymap | effect |
+| --- | --- | --- |
+| insert | Ctrl + p | move up in list |
+| insert | Ctrl + n | move down in list |
+| insert | Ctrl + y | select in list |
+| insert | Ctrl + space | force complete to open |
+
 ### peek
 | mode | keymap | effect |
 | --- | --- | --- |
