@@ -1,14 +1,15 @@
 return {
-    "rose-pine/neovim",
-    name = "rose-pine-moon",
+    "EdenEast/nightfox.nvim",
     config = function()
-        require('rose-pine').setup({
-            dim_inactive_windows = true,
-            styles = {
-                italic = false,
-            },
+        require('nightfox').setup({
+            options = {
+                dim_inactive = true,
+                styles = {
+                    comments = "italic",
+                }
+            }
         });
 
-        vim.cmd("colorscheme rose-pine-moon")
+        vim.cmd("colorscheme nightfox")
     end
 }
