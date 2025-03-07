@@ -75,6 +75,11 @@
 | --- | --- | --- |
 | normal | \<leader\>u | view undo tree |
 
+### oil
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>- | open parent directory in oil file explorer |
+
 ### screenkey
 | mode | keymap | effect |
 | --- | --- | --- |
