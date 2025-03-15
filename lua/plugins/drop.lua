@@ -4,7 +4,7 @@ return {
     config = function()
         require("drop").setup({
             theme = 'matrix',
-            max = 1000,
+            max = 1500,
             screensaver = 1000 * 60 * 1,
         })
     end,
