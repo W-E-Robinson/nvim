@@ -64,6 +64,12 @@
 | insert | Ctrl + y | select in list |
 | insert | Ctrl + space | force complete to open |
 
+### comment
+| mode | keymap | effect |
+| --- | --- | --- |
+| visual | \<leader\>gc | toggle line comment |
+| visual | \<leader\>gb | toggle block comment |
+
 ### peek
 | mode | keymap | effect |
 | --- | --- | --- |
