@@ -70,6 +70,14 @@
 | visual | \<leader\>gc | toggle line comment |
 | visual | \<leader\>gb | toggle block comment |
 
+### terminal
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>tt | open terminal |
+| normal | \<leader\>tl | open terminal and run current line |
+| visual | \<leader\>tl | open terminal and run current line |
+| visual | \<leader\>tv | open terminal and run visual selection |
+
 ### peek
 | mode | keymap | effect |
 | --- | --- | --- |
