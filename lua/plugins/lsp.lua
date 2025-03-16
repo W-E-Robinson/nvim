@@ -32,12 +32,24 @@ return {
                 "lua_ls",
                 "ts_ls",
                 "pylsp",
+                "rust_analyzer",
             },
             handlers = {
                 function(server_name)
                     if server_name == "rust_analyzer" then
-                        require('lspconfig')[server_name].setup({
-                            cmd = { "/Users/williamrobinson/.rustup/toolchains/stable-x86_64-apple-darwin/bin/rust-analyzer" },
+                        require("lspconfig")[server_name].setup({
+                            settings = {
+                                files = {
+                                    excludeDirs = {
+                                        "target",
+                                        "node_modules",
+                                        ".git",
+                                    },
+                                },
+                                logs = {
+                                    level = "warn"
+                                },
+                            },
                             capabilities = capabilities,
                             on_attach = function(_, bufnr)
                                 set_lsp_keymaps(bufnr)
