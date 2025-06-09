@@ -33,6 +33,8 @@ return {
                 "ts_ls",
                 "pylsp",
                 "rust_analyzer",
+                "jsonls",
+                "yamlls",
             },
             handlers = {
                 function(server_name)
