@@ -16,7 +16,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set("i", "<C-f>", "<Esc>A<Space>{<Esc>o}<Esc>O")
+vim.keymap.set("i", "<C-f>", "<Space>{<CR>}<Esc>O")
 
 vim.keymap.set("n", "<leader>sg", [[:%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>]])
 vim.keymap.set("n", "<leader>sc", [[:%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>]])
