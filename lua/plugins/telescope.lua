@@ -43,5 +43,7 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>po', builtin.oldfiles, {})
+
+        vim.keymap.set('n', '<leader>tb', '<cmd>Telescope buffers<CR>')
     end
 }
