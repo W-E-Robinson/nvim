@@ -70,6 +70,22 @@
 | visual | \<leader\>gc | toggle line comment |
 | visual | \<leader\>gb | toggle block comment |
 
+### dap
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>c | attach debugger + debug continue |
+| normal | \<leader\>ss | debug step over |
+| normal | \<leader\>si | debug step into |
+| normal | \<leader\>so | debug step out |
+| normal | \<leader\>b | debug toggle breakpoint |
+| normal | \<leader\>B | debug set condition breakpoint |
+| normal | \<leader\>dr | toggle repl ui |
+| normal | \<leader\>ds | show stacks |
+| normal | \<leader\>dw | show watches |
+| normal | \<leader\>dv | show breakpoints |
+| normal | \<leader\>dS | show scopes |
+| normal | \<leader\>dc | show console |
+
 ### terminal
 | mode | keymap | effect |
 | --- | --- | --- |
