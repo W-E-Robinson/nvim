@@ -4,7 +4,7 @@ local function navigate(args)
     local buffer = args.buf
 
     local wid = nil
-    local win_ids = vim.api.nvim_list_wins() -- Get all window IDs
+    local win_ids = vim.api.nvim_list_wins()
     for _, win_id in ipairs(win_ids) do
         local win_bufnr = vim.api.nvim_win_get_buf(win_id)
         if win_bufnr == buffer then
@@ -39,17 +39,51 @@ return {
             local dap = require("dap")
             dap.set_log_level("DEBUG")
 
-            vim.keymap.set("n", "<F8>", dap.continue, { desc = "Debug: Continue" })
-            vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
-            vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debug: Step Into" })
-            vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debug: Step Out" })
+            dap.adapters.node2 = {
+                type = "server",
+                host = "127.0.0.1",
+                port = 9229,
+            }
+
+            dap.configurations.typescript = {
+                -- CLI: node --inspect -r service.js
+                -- CLI: node --inspect -r ts-node/register service.ts
+                {
+                    name = "Attach to node / ts-node",
+                    type = "node2",
+                    request = "attach",
+                    port = 9229,
+                    restart = true,
+                    protocol = "inspector",
+                    sourceMaps = true,
+                    skipFiles = { "<node_internals>/**" },
+                    -- outFiles = { "${workspaceFolder}/dist/**/*.js" }, -- needed if transpiling
+                },
+                -- {
+                --     name = "Debug jest tests",
+                --     type = "node2",
+                --     request = "launch",
+                --     program = "${workspaceFolder}/node_modules/jest/bin/jest",
+                --     args = { "--runInBand" },
+                --     cwd = "${workspaceFolder}",
+                --     console = "integratedTerminal",
+                --     internalConsoleOptions = "neverOpen",
+                --     sourceMaps = true,
+                --     protocol = "inspector",
+                --     skipFiles = { "<node_internals>/**" },
+                -- },
+            }
+
+            vim.keymap.set("n", "<leader>c", dap.continue, { desc = "Debug: Continue" })
+            vim.keymap.set("n", "<leader>ss", dap.step_over, { desc = "Debug: Step Over" })
+            vim.keymap.set("n", "<leader>si", dap.step_into, { desc = "Debug: Step Into" })
+            vim.keymap.set("n", "<leader>so", dap.step_out, { desc = "Debug: Step Out" })
             vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
             vim.keymap.set("n", "<leader>B", function()
                 dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
             end, { desc = "Debug: Set Conditional Breakpoint" })
-        end
+        end,
     },
-
 
     {
         "rcarriga/nvim-dap-ui",
@@ -63,7 +97,7 @@ return {
                         { id = name },
                     },
                     enter = true,
-                    size = 40,
+                    size = 100,
                     position = "right",
                 }
             end
@@ -135,7 +169,7 @@ return {
 
             dap.listeners.after.event_output.dapui_config = function(_, body)
                 if body.category == "console" then
-                    dapui.eval(body.output) -- Sends stdout/stderr to Console
+                    dapui.eval(body.output)
                 end
             end
         end,
@@ -151,30 +185,11 @@ return {
         config = function()
             require("mason-nvim-dap").setup({
                 ensure_installed = {
-                    "delve",
+                    "node2",
                 },
                 automatic_installation = true,
                 handlers = {
                     function(config)
-                        require("mason-nvim-dap").default_setup(config)
-                    end,
-                    delve = function(config)
-                        table.insert(config.configurations, 1, {
-                            args = function() return vim.split(vim.fn.input("args> "), " ") end,
-                            type = "delve",
-                            name = "file",
-                            request = "launch",
-                            program = "${file}",
-                            outputMode = "remote",
-                        })
-                        table.insert(config.configurations, 1, {
-                            args = function() return vim.split(vim.fn.input("args> "), " ") end,
-                            type = "delve",
-                            name = "file args",
-                            request = "launch",
-                            program = "${file}",
-                            outputMode = "remote",
-                        })
                         require("mason-nvim-dap").default_setup(config)
                     end,
                 },
