@@ -59,19 +59,27 @@ return {
                     skipFiles = { "<node_internals>/**" },
                     -- outFiles = { "${workspaceFolder}/dist/**/*.js" }, -- needed if transpiling
                 },
-                -- {
-                --     name = "Debug jest tests",
-                --     type = "node2",
-                --     request = "launch",
-                --     program = "${workspaceFolder}/node_modules/jest/bin/jest",
-                --     args = { "--runInBand" },
-                --     cwd = "${workspaceFolder}",
-                --     console = "integratedTerminal",
-                --     internalConsoleOptions = "neverOpen",
-                --     sourceMaps = true,
-                --     protocol = "inspector",
-                --     skipFiles = { "<node_internals>/**" },
-                -- },
+                {
+                    name = "Current test file (jest)",
+                    type = "node2",
+                    request = "launch",
+                    runtimeExecutable = "node",
+                    runtimeArgs = {
+                        "--inspect-brk=9229",
+                        "${workspaceFolder}/node_modules/.bin/jest",
+                        "--runInBand",
+                        "--no-coverage",
+                    },
+                    args = { "${file}" },
+                    cwd = "${workspaceFolder}",
+                    console = "integratedTerminal",
+                    internalConsoleOptions = "openOnSessionStart",
+                    sourceMaps = true,
+                    protocol = "inspector",
+                    skipFiles = { "<node_internals>/**" },
+                    port = 9229,
+                    disableOptimisticBPs = true,
+                }
             }
 
             vim.keymap.set("n", "<leader>c", dap.continue, { desc = "Debug: Continue" })
