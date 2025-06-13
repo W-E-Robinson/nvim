@@ -32,6 +32,7 @@
 | normal | \<leader\>pWs | search word under cursor in current session (case sensitive) |
 | normal | \<leader\>ps | grep search in current session |
 | normal | \<leader\>po | list recently opened directories/files |
+| normal | \<leader\>tb | list all buffers |
 
 ### harpoon
 | mode | keymap | effect |
