@@ -109,7 +109,7 @@
 ### oil
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>- | open parent directory in oil file explorer |
+| normal | \<leader\>- | in file: open parent directory in oil file explorer, in explorer: change to oil file explorer |
 
 ### screenkey
 | mode | keymap | effect |
