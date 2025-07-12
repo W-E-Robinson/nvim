@@ -65,6 +65,11 @@
 | insert | Ctrl + y | select in list |
 | insert | Ctrl + space | force complete to open |
 
+### colour
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>ics | toggle dark and light mode |
+
 ### comment
 | mode | keymap | effect |
 | --- | --- | --- |
