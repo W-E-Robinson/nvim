@@ -35,6 +35,7 @@ return {
                 "rust_analyzer",
                 "jsonls",
                 "yamlls",
+                "gopls",
             },
             handlers = {
                 function(server_name)
