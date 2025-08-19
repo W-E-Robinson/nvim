@@ -11,6 +11,7 @@ return {
                 "python",
                 "json",
                 "yaml",
+                "go",
             },
             sync_install = false,
             auto_install = false,
