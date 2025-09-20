@@ -10,12 +10,11 @@ return {
     },
 
     config = function()
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local function set_lsp_keymaps(bufnr)
-            local opts = { buffer = bufnr, silent = true, remap = false }
-            vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+            local opts = { buffer = bufnr, silent = true }
+            vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
             vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
@@ -39,50 +38,48 @@ return {
             },
             handlers = {
                 function(server_name)
-                    if server_name == "rust_analyzer" then
-                        require("lspconfig")[server_name].setup({
-                            settings = {
-                                files = {
-                                    excludeDirs = {
-                                        "target",
-                                        "node_modules",
-                                        ".git",
-                                    },
-                                },
-                                logs = {
-                                    level = "warn"
+                    vim.lsp.config("rust_analyzer", {
+                        settings = {
+                            files = {
+                                excludeDirs = {
+                                    "target",
+                                    "node_modules",
+                                    ".git",
                                 },
                             },
-                            capabilities = capabilities,
-                            on_attach = function(_, bufnr)
-                                set_lsp_keymaps(bufnr)
-                            end,
-                        })
-                    elseif server_name == "lua_ls" then
-                        require("lspconfig")[server_name].setup({
-                            settings = {
-                                Lua = {
-                                    diagnostics = {
-                                        globals = { 'vim' },
-                                    },
+                            logs = {
+                                level = "warn"
+                            },
+                        },
+                        capabilities = capabilities,
+                        on_attach = function(_, bufnr)
+                            set_lsp_keymaps(bufnr)
+                        end,
+                    })
+                    vim.lsp.config("lua_ls", {
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { 'vim' },
                                 },
                             },
-                            capabilities = capabilities,
-                            on_attach = function(_, bufnr)
-                                set_lsp_keymaps(bufnr)
-                            end,
-                        })
-                    else
-                        require("lspconfig")[server_name].setup({
-                            capabilities = capabilities,
-                            on_attach = function(_, bufnr)
-                                set_lsp_keymaps(bufnr)
-                            end,
-                        })
-                    end
+                        },
+                        capabilities = capabilities,
+                        on_attach = function(_, bufnr)
+                            set_lsp_keymaps(bufnr)
+                        end,
+                    })
+                    vim.lsp.config(server_name, {
+                        capabilities = capabilities,
+                        on_attach = function(_, bufnr)
+                            set_lsp_keymaps(bufnr)
+                        end,
+                    })
+                    vim.lsp.enable(server_name)
                 end,
             },
         })
+
         vim.diagnostic.config({
             float = {
                 focusable = false,
@@ -93,5 +90,5 @@ return {
                 prefix = "",
             },
         })
-    end
+    end,
 }
