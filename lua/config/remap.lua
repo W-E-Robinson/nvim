@@ -9,8 +9,21 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<C-c>", ":wqa<CR>")
-vim.keymap.set("i", "<C-c>", "<Esc>:wqa<CR>")
+local function close_all_windows()
+    local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+
+    for _, b in ipairs(bufs) do
+        if b.name:find("%.rs$") then
+            print("You have a Rust file in the buffers.")
+            return
+        end
+    end
+
+    vim.cmd("wqa")
+end
+
+vim.keymap.set("n", "<C-c>", function() close_all_windows() end)
+vim.keymap.set("i", "<C-c>", function() close_all_windows() end)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
