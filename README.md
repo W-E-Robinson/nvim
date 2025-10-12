@@ -44,6 +44,11 @@
 | normal | Ctrl + l | jump to 3rd harpoon file |
 | normal | Ctrl + ; | jump to 4th harpoon file |
 
+### bufferlist
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>l | open bufferlist |
+
 ### lsp
 | mode | keymap | effect |
 | --- | --- | --- |
