@@ -28,11 +28,11 @@ require("lazy").setup({
         -- import your plugins
         { import = "plugins" },
         { import = "patches" },
-        { dir = "~/projects/git-blame", dev = true },
+        { dir = "~/projects/git_blame", dev = true },
     },
     dev = {
         path = "~/projects",
-        patterns = { "git-blame" },
+        patterns = { "git_blame" },
     },
 
     -- Configure any other settings here. See the documentation for more details.
