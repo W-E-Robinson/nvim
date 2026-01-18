@@ -53,7 +53,8 @@
 | mode | keymap | effect |
 | --- | --- | --- |
 | normal | \<leader\>f | format code in file |
-| normal | gd | go to definition |
+| normal | \<leader\>gd | go to definition |
+| normal | \<leader\>gD | go to definition on vertical splut |
 | normal | K | detail box |
 | normal | \<leader\>vd | view full error message |
 | normal | \<leader\>cd | see all warnings + errors in quickfix list |

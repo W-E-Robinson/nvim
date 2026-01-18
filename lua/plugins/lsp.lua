@@ -16,6 +16,10 @@ return {
             local opts = { buffer = bufnr, silent = true }
             vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            vim.keymap.set("n", "gD", function()
+                vim.cmd("vsplit")
+                vim.lsp.buf.definition()
+            end, opts)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
             vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
             vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, opts)
