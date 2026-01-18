@@ -10,6 +10,28 @@ return {
             }
         });
 
+        vim.opt.guicursor = {
+            "n-v-c:block-Cursor",
+            "i:ver25",
+        }
+
+        vim.api.nvim_create_autocmd("ColorScheme", {
+            callback = function()
+                local cs = vim.g.colors_name
+
+                if cs == "duskfox" then
+                    vim.api.nvim_set_hl(0, "Cursor", {
+                        bg = "grey",
+                    })
+                elseif cs == "dayfox" then
+                    vim.api.nvim_set_hl(0, "Cursor", {
+                        fg = "white",
+                        bg = "black",
+                    })
+                end
+            end,
+        })
+
         local current_colorscheme = "duskfox"
         vim.cmd(string.format("colorscheme %s", current_colorscheme))
 

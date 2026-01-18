@@ -31,6 +31,7 @@
 | normal | \<leader\>pws | search word under cursor in current session |
 | normal | \<leader\>pWs | search word under cursor in current session (case sensitive) |
 | normal | \<leader\>ps | grep search in current session |
+| normal | \<leader\>pS | grep search the last grap search |
 | normal | \<leader\>po | list recently opened directories/files |
 | normal | \<leader\>tb | list all buffers |
 
@@ -53,7 +54,8 @@
 | mode | keymap | effect |
 | --- | --- | --- |
 | normal | \<leader\>f | format code in file |
-| normal | gd | go to definition |
+| normal | \<leader\>gd | go to definition |
+| normal | \<leader\>gD | go to definition on vertical splut |
 | normal | K | detail box |
 | normal | \<leader\>vd | view full error message |
 | normal | \<leader\>cd | see all warnings + errors in quickfix list |
