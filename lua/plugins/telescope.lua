@@ -21,6 +21,8 @@ return {
             },
         })
 
+        local last_query = ""
+
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', function()
             builtin.find_files({
@@ -40,8 +42,14 @@ return {
             builtin.grep_string({ search = word })
         end)
         vim.keymap.set('n', '<leader>ps', function()
-            builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            local query = vim.fn.input("Grep > ")
+            last_query = query
+            builtin.grep_string({ search = query })
         end)
+        vim.keymap.set('n', '<leader>pS', function()
+            builtin.grep_string({ search = last_query })
+        end)
+
         vim.keymap.set('n', '<leader>po', builtin.oldfiles, {})
 
         vim.keymap.set('n', '<leader>tb', '<cmd>Telescope buffers<CR>')

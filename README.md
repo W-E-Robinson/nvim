@@ -31,6 +31,7 @@
 | normal | \<leader\>pws | search word under cursor in current session |
 | normal | \<leader\>pWs | search word under cursor in current session (case sensitive) |
 | normal | \<leader\>ps | grep search in current session |
+| normal | \<leader\>pS | grep search the last grap search |
 | normal | \<leader\>po | list recently opened directories/files |
 | normal | \<leader\>tb | list all buffers |
 
