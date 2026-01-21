@@ -8,5 +8,7 @@ return {
         function _G.ReloadPlugin()
             require("lazy").reload("git_blame")
         end
+
+        vim.keymap.set("n", "<leader>bcl", vim.cmd.BlameCurrentLine)
     end
 }
