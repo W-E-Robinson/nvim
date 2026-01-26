@@ -10,7 +10,7 @@ return {
 
         vim.keymap.set("n", "<leader><Left>", function() require("origami").h() end) -- fold
         vim.keymap.set("n", "<leader><Right>", function() require("origami").l() end) -- unfold
-        vim.keymap.set("n", "<leader><Down>", function() require("origami").dollar() end) -- fold recursively
-        vim.keymap.set("n", "<leader><Up>", function() require("origami").caret() end) -- unfold recursively
+        vim.keymap.set("n", "<leader><Down>", function() require("origami").dollar() end) -- unfold recursively
+        vim.keymap.set("n", "<leader><Up>", function() require("origami").caret() end) -- fold recursively
     end,
 }

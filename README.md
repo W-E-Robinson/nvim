@@ -123,6 +123,19 @@
 | --- | --- | --- |
 | normal | \<leader\>- | in file: open parent directory in oil file explorer, in explorer: change to oil file explorer |
 
+### nvim-git-blame
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>bcl | git blame current line |
+
+### nvim-origami
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\><Left> | fold line |
+| normal | \<leader\><Right> | unfold line |
+| normal | \<leader\><Down> | unfold line recursively |
+| normal | \<leader\><Up> | fold line recursively |
+
 ### screenkey
 | mode | keymap | effect |
 | --- | --- | --- |
