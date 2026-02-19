@@ -128,14 +128,6 @@
 | --- | --- | --- |
 | normal | \<leader\>bcl | git blame current line |
 
-### nvim-origami
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\><Left> | fold line |
-| normal | \<leader\><Right> | unfold line |
-| normal | \<leader\><Down> | unfold line recursively |
-| normal | \<leader\><Up> | fold line recursively |
-
 ### screenkey
 | mode | keymap | effect |
 | --- | --- | --- |

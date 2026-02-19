@@ -25,7 +25,6 @@
   "nvim-git-blame": { "branch": "main", "commit": "a5f1356cf1c562970876869cbe1a26285b4e91ea" },
   "nvim-lspconfig": { "branch": "master", "commit": "66fd02ad1c7ea31616d3ca678fa04e6d0b360824" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
-  "nvim-origami": { "branch": "main", "commit": "f279ab8ecb610029757b3a6749067d190a74bbe5" },
   "nvim-regexplainer": { "branch": "main", "commit": "78257e4ade22ddcc74dc18b67444e8da079ee7ec" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-web-devicons": { "branch": "master", "commit": "746ffbb17975ebd6c40142362eee1b0249969c5c" },
