@@ -34,11 +34,11 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "ts_ls",
-                "pylsp",
-                "rust_analyzer",
+                -- "pylsp",
+                -- "rust_analyzer",
                 "jsonls",
                 "yamlls",
-                "gopls",
+                -- "gopls",
             },
             handlers = {
                 function(server_name)
