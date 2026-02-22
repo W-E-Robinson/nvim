@@ -83,6 +83,11 @@
 | visual | \<leader\>gc | toggle line comment |
 | visual | \<leader\>gb | toggle block comment |
 
+### markdown preview
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>mp | toggle markdown preview |
+
 ### dap
 | mode | keymap | effect |
 | --- | --- | --- |
@@ -106,12 +111,6 @@
 | normal | \<leader\>tl | open terminal and run current line |
 | visual | \<leader\>tl | open terminal and run current line |
 | visual | \<leader\>tv | open terminal and run visual selection |
-
-### peek
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>mpo | open markdown file preview |
-| normal | \<leader\>mpc | close markdown file preview |
 
 ### undotree
 | mode | keymap | effect |
