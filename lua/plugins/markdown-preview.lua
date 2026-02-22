@@ -1,3 +1,4 @@
+-- :call mdkp#util#install()
 return {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
