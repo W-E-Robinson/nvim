@@ -35,16 +35,6 @@
 | normal | \<leader\>po | list recently opened directories/files |
 | normal | \<leader\>tb | list all buffers |
 
-### harpoon
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | Ctrl + m | open harpoon menu |
-| normal | Ctrl + a | append file to harpoon menu |
-| normal | Ctrl + j | jump to 1st harpoon file |
-| normal | Ctrl + k | jump to 2nd harpoon file |
-| normal | Ctrl + l | jump to 3rd harpoon file |
-| normal | Ctrl + ; | jump to 4th harpoon file |
-
 ### bufferlist
 | mode | keymap | effect |
 | --- | --- | --- |
