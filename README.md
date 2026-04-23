@@ -94,14 +94,6 @@
 | normal | \<leader\>dS | show scopes |
 | normal | \<leader\>dc | show console |
 
-### terminal
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>tt | open terminal |
-| normal | \<leader\>tl | open terminal and run current line |
-| visual | \<leader\>tl | open terminal and run current line |
-| visual | \<leader\>tv | open terminal and run visual selection |
-
 ### undotree
 | mode | keymap | effect |
 | --- | --- | --- |
