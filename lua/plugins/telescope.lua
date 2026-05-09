@@ -24,14 +24,7 @@ return {
         local last_query = ""
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>pf', function()
-            builtin.find_files({
-                hidden = true,
-                find_command = {
-                    'fd', '--type', 'f', '--hidden', '--exclude', '*.json', '--exclude', '.git'
-                }
-            })
-        end, {})
+        vim.keymap.set('n', '<leader>pf', function() builtin.find_files({}) end, {})
         vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
