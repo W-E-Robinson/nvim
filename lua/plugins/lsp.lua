@@ -39,6 +39,7 @@ return {
                 "jsonls",
                 "yamlls",
                 -- "gopls",
+                "eslint", -- may need a: npm install -g vscode-langservers-extracted (or similar)
             },
             handlers = {
                 function(server_name)
