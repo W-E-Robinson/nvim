@@ -104,6 +104,20 @@
 | --- | --- | --- |
 | normal | \<leader\>- | in file: open parent directory in oil file explorer, in explorer: change to oil file explorer |
 
+### claude
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>ac | toggle claude |
+| normal | \<leader\>af | focus claude |
+| normal | \<leader\>ar | resume claude |
+| normal | \<leader\>aC | continue claude |
+| normal | \<leader\>am | select claude model |
+| normal | \<leader\>ab | add current buffer |
+| visual | \<leader\>as | send to claude |
+| normal (file explorers) | \<leader\>as | add file |
+| normal | \<leader\>aa | accept diff |
+| normal | \<leader\>ad | deny diff |
+
 ### nvim-git-blame
 | mode | keymap | effect |
 | --- | --- | --- |
