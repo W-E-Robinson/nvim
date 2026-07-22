@@ -37,11 +37,12 @@ return {
             },
         })
 
-        vim.api.nvim_create_autocmd("VimEnter", {
+        -- Removing on load due to interfering with claude input
+        --[[ vim.api.nvim_create_autocmd("VimEnter", {
             callback = function()
                 vim.cmd("Screenkey")
             end,
-        })
+        }) ]]
 
         -- toggles screenkey display
         vim.keymap.set('n', '<leader>sk', '<cmd>Screenkey<CR>', { noremap = true, silent = true })
