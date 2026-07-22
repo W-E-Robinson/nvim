@@ -39,48 +39,53 @@ return {
             local dap = require("dap")
             dap.set_log_level("DEBUG")
 
-            dap.adapters.node2 = {
+            dap.adapters["pwa-node"] = {
                 type = "server",
-                host = "127.0.0.1",
-                port = 9229,
+                host = "localhost",
+                port = "${port}",
+                executable = {
+                    command = "node",
+                    args = {
+                        vim.fn.stdpath("data")
+                        .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                        "${port}",
+                    },
+                },
             }
 
-            dap.configurations.typescript = {
-                -- CLI: node --inspect -r service.js
-                -- CLI: node --inspect -r ts-node/register service.ts
+            local jest_config = {
                 {
                     name = "Attach to node / ts-node",
-                    type = "node2",
+                    type = "pwa-node",
                     request = "attach",
                     port = 9229,
                     restart = true,
-                    protocol = "inspector",
                     sourceMaps = true,
                     skipFiles = { "<node_internals>/**" },
-                    -- outFiles = { "${workspaceFolder}/dist/**/*.js" }, -- needed if transpiling
                 },
                 {
                     name = "Current test file (jest)",
-                    type = "node2",
+                    type = "pwa-node",
                     request = "launch",
                     runtimeExecutable = "node",
                     runtimeArgs = {
-                        "--inspect-brk=9229",
-                        "${workspaceFolder}/node_modules/.bin/jest",
+                        "--inspect-brk",
+                        "${workspaceFolder}/node_modules/jest/bin/jest.js",
                         "--runInBand",
                         "--no-coverage",
                     },
                     args = { "${file}" },
                     cwd = "${workspaceFolder}",
-                    console = "integratedTerminal",
-                    internalConsoleOptions = "openOnSessionStart",
                     sourceMaps = true,
-                    protocol = "inspector",
                     skipFiles = { "<node_internals>/**" },
-                    port = 9229,
                     disableOptimisticBPs = true,
                 }
             }
+
+            dap.configurations.typescript = jest_config
+            dap.configurations.typescriptreact = jest_config
+            dap.configurations.javascript = jest_config
+            dap.configurations.javascriptreact = jest_config
 
             vim.keymap.set("n", "<leader>c", dap.continue, { desc = "Debug: Continue" })
             vim.keymap.set("n", "<leader>ss", dap.step_over, { desc = "Debug: Step Over" })
