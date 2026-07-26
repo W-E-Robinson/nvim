@@ -42,3 +42,13 @@ vim.keymap.set("n", "<leader>V", ":Vex<ENTER>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+local function where_am_i()
+    local file = vim.api.nvim_buf_get_name(0)
+    local line_number = vim.api.nvim_win_get_cursor(0)[1]
+    local wai = string.format("%s:%s", file, line_number)
+    print(wai)
+    vim.fn.setreg("+", wai)
+end
+
+vim.keymap.set("n", "<leader>wai", function() where_am_i() end)
