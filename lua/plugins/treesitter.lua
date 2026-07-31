@@ -2,7 +2,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    branch =  "master",
+    branch = "master",
     config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = {
@@ -30,5 +30,8 @@ return {
                 additional_vim_regex_highlighting = false,
             },
         })
+
+        -- Disable markdown code block injections as temp fix
+        vim.treesitter.query.set("markdown", "injections", "")
     end
 }
