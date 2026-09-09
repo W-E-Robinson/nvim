@@ -133,4 +133,9 @@
 | --- | --- | --- |
 | normal | \<leader\>mir | make it rain |
 
+### lazy
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>; | update packages |
+
 [Inspiration](https://github.com/ThePrimeagen/init.lua).

@@ -52,3 +52,5 @@ local function where_am_i()
 end
 
 vim.keymap.set("n", "<leader>wai", function() where_am_i() end)
+
+vim.keymap.set("n", "<leader>;", ":Lazy update<ENTER>")
