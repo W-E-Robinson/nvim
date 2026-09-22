@@ -39,6 +39,26 @@ vim.keymap.set("n", "<leader>/", "/<C-r><C-w><ENTER>")
 vim.keymap.set("n", "<leader>H", ":Hex<ENTER>")
 vim.keymap.set("n", "<leader>V", ":Vex<ENTER>")
 
+-- closes every split except the one the cursor is in
+-- netrw explorers close like anything else, even with no file opened yet
+-- if the cursor is in the explorer, the explorer is what survives
+-- floats are skipped, so telescope/lsp hover/floating terminals are left alone
+-- unsaved changes aren't lost: the split closes but the buffer goes hidden
+-- all buffers stay listed, and other tab pages are untouched
+local function close_other_splits()
+    local current = vim.api.nvim_get_current_win()
+
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+        local is_float = vim.api.nvim_win_get_config(win).relative ~= ""
+
+        if win ~= current and not is_float then
+            vim.api.nvim_win_close(win, false)
+        end
+    end
+end
+
+vim.keymap.set("n", "<leader>o", function() close_other_splits() end)
+
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
