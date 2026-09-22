@@ -123,6 +123,14 @@
 | --- | --- | --- |
 | normal | \<leader\>bcl | git blame current line |
 
+### git-linker
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>gy | yank git link |
+| visual | \<leader\>gy | yank git link |
+| normal | \<leader\>gY | open git link |
+| visual | \<leader\>gY | open git link |
+
 ### screenkey
 | mode | keymap | effect |
 | --- | --- | --- |
