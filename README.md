@@ -21,6 +21,7 @@
 | normal | \<leader\>sc | begin substitution (:%s) with current word + /gc |
 | normal | \<leader\>/ | begin search (/) with current word |
 | normal | \<leader\>\<leader\> | Source file |
+| normal | \<leader\>wai | yank file:line to system clipboard |
 
 ## plugins
 ### telescope
@@ -93,6 +94,7 @@
 | normal | \<leader\>dv | show breakpoints |
 | normal | \<leader\>dS | show scopes |
 | normal | \<leader\>dc | show console |
+| normal | \<leader\>db | show breakpoints |
 
 ### undotree
 | mode | keymap | effect |
