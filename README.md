@@ -8,6 +8,8 @@
 | normal | \<leader\>pv | enters vim explorer (:Ex) |
 | normal | \<leader\>H | horizontal explorer (:Hex) |
 | normal | \<leader\>V | vertical explorer (:Vex) |
+| normal | \<leader\>h | clone current file into a horizontal split |
+| normal | \<leader\>v | clone current file into a vertical split |
 | normal | \<leader\>o | close all splits except the one the cursor is in |
 | view | J | move code down once |
 | view | K | move code up once |
