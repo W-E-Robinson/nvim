@@ -74,3 +74,7 @@ end
 vim.keymap.set("n", "<leader>wai", function() where_am_i() end)
 
 vim.keymap.set("n", "<leader>;", ":Lazy update<ENTER>")
+
+-- clones the current file into a new split, cursor position and all
+vim.keymap.set("n", "<leader>v", "<C-w>v")
+vim.keymap.set("n", "<leader>h", "<C-w>s")
