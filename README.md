@@ -82,6 +82,13 @@
 | --- | --- | --- |
 | normal | \<leader\>mp | toggle markdown preview |
 
+### neotest
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>nn | run nearest test |
+| normal | \<leader\>nf | run tests in current file |
+| normal | \<leader\>np | toggle output panel |
+
 ### dap
 | mode | keymap | effect |
 | --- | --- | --- |
