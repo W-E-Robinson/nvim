@@ -24,27 +24,27 @@ return {
         local last_query = ""
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>pf', function() builtin.find_files({}) end, {})
-        vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
+        vim.keymap.set('n', '<leader>pf', function() builtin.find_files({}) end, { desc = "Find files" })
+        vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = "Find git files" })
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
             builtin.grep_string({ search = word })
-        end)
+        end, { desc = "Grep word under cursor" })
         vim.keymap.set('n', '<leader>pWs', function()
             local word = vim.fn.expand("<cWORD>")
             builtin.grep_string({ search = word })
-        end)
+        end, { desc = "Grep WORD under cursor" })
         vim.keymap.set('n', '<leader>ps', function()
             local query = vim.fn.input("Grep > ")
             last_query = query
             builtin.grep_string({ search = query })
-        end)
+        end, { desc = "Grep prompt" })
         vim.keymap.set('n', '<leader>pS', function()
             builtin.grep_string({ search = last_query })
-        end)
+        end, { desc = "Grep last query" })
 
-        vim.keymap.set('n', '<leader>po', builtin.oldfiles, {})
+        vim.keymap.set('n', '<leader>po', builtin.oldfiles, { desc = "Recent files" })
 
-        vim.keymap.set('n', '<leader>tb', '<cmd>Telescope buffers<CR>')
+        vim.keymap.set('n', '<leader>tb', '<cmd>Telescope buffers<CR>', { desc = "Telescope buffers" })
     end
 }

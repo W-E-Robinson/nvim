@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw file explorer" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -25,19 +25,21 @@ end
 vim.keymap.set("n", "<C-c>", function() close_all_windows() end)
 vim.keymap.set("i", "<C-c>", function() close_all_windows() end)
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>dv", [["_d]], { desc = "Delete without yanking (void)" })
 
 vim.keymap.set("i", "<C-f>", "<Space>{<CR>}<Esc>O")
 
-vim.keymap.set("n", "<leader>sg", [[:%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>]])
-vim.keymap.set("n", "<leader>sc", [[:%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>sg", [[:%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>]],
+    { desc = "Substitute word under cursor (global)" })
+vim.keymap.set("n", "<leader>sc", [[:%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>]],
+    { desc = "Substitute word under cursor (confirm)" })
 
-vim.keymap.set("n", "<leader>/", "/<C-r><C-w><ENTER>")
+vim.keymap.set("n", "<leader>/", "/<C-r><C-w><ENTER>", { desc = "Search word under cursor" })
 
-vim.keymap.set("n", "<leader>H", ":Hex<ENTER>")
-vim.keymap.set("n", "<leader>V", ":Vex<ENTER>")
+vim.keymap.set("n", "<leader>H", ":Hex<ENTER>", { desc = "Explorer in horizontal split" })
+vim.keymap.set("n", "<leader>V", ":Vex<ENTER>", { desc = "Explorer in vertical split" })
 
 -- closes every split except the one the cursor is in
 -- netrw explorers close like anything else, even with no file opened yet
@@ -57,11 +59,12 @@ local function close_other_splits()
     end
 end
 
-vim.keymap.set("n", "<leader>o", function() close_other_splits() end)
+vim.keymap.set("n", "<leader>o", function() close_other_splits() end,
+    { desc = "Close all splits but current" })
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
-end)
+end, { desc = "Source current file" })
 
 local function where_am_i()
     local file = vim.api.nvim_buf_get_name(0)
@@ -71,10 +74,11 @@ local function where_am_i()
     vim.fn.setreg("+", wai)
 end
 
-vim.keymap.set("n", "<leader>wai", function() where_am_i() end)
+vim.keymap.set("n", "<leader>wai", function() where_am_i() end,
+    { desc = "Where am I (yank file:line)" })
 
-vim.keymap.set("n", "<leader>;", ":Lazy update<ENTER>")
+vim.keymap.set("n", "<leader>;", ":Lazy update<ENTER>", { desc = "Lazy update" })
 
 -- clones the current file into a new split, cursor position and all
-vim.keymap.set("n", "<leader>v", "<C-w>v")
-vim.keymap.set("n", "<leader>h", "<C-w>s")
+vim.keymap.set("n", "<leader>v;", "<C-w>v", { desc = "Clone file into vertical split" })
+vim.keymap.set("n", "<leader>h;", "<C-w>s", { desc = "Clone file into horizontal split" })

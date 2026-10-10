@@ -45,6 +45,7 @@ return {
         }) ]]
 
         -- toggles screenkey display
-        vim.keymap.set('n', '<leader>sk', '<cmd>Screenkey<CR>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>sk', '<cmd>Screenkey<CR>',
+            { noremap = true, silent = true, desc = "Toggle Screenkey" })
     end
 }

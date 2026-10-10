@@ -4,6 +4,6 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>mir", function()
             require("cellular-automaton").start_animation("make_it_rain")
-        end)
+        end, { desc = "Make it rain" })
     end
 }

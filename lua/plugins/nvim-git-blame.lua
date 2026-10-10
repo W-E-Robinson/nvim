@@ -4,6 +4,6 @@ return {
   config = function()
       require("nvim_git_blame").setup()
       -- Map <leader>bcl to show git info for the current line
-      vim.keymap.set("n", "<leader>bcl", vim.cmd.BlameCurrentLine)
+      vim.keymap.set("n", "<leader>bcl", vim.cmd.BlameCurrentLine, { desc = "Blame current line" })
   end
 }
