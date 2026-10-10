@@ -25,20 +25,20 @@ return {
         -- Run nearest test
         vim.keymap.set("n", "<leader>nn", function()
             neotest.run.run()
-        end)
+        end, { desc = "Test: run nearest" })
 
         -- Run tests in current file
         vim.keymap.set("n", "<leader>nf", function()
             neotest.run.run(vim.fn.expand("%"))
-        end)
+        end, { desc = "Test: run current file" })
 
         -- vim.keymap.set("n", "<leader>nd", function()
         --     neotest.run.run({strategy = "dap"})
-        -- end)
+        -- end, { desc = "Test: debug nearest" })
 
         -- Toggle output panel
         vim.keymap.set("n", "<leader>np", function()
             neotest.output_panel.toggle()
-        end)
+        end, { desc = "Test: toggle output panel" })
     end,
 }

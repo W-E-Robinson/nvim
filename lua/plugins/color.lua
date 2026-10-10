@@ -42,6 +42,6 @@ return {
                 current_colorscheme = "duskfox"
             end
             vim.cmd(string.format("colorscheme %s", current_colorscheme))
-        end)
+        end, { desc = "Invert colorscheme (dusk/dayfox)" })
     end
 }

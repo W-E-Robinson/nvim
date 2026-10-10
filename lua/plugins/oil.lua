@@ -15,6 +15,6 @@ return {
             }
         })
 
-        vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>")
+        vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open Oil file explorer" })
     end
 }
