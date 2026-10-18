@@ -152,6 +152,11 @@
 | --- | --- | --- |
 | normal | \<leader\>mir | make it rain |
 
+### hardtime
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>iht | toggle hardtime |
+
 ### which-key
 | mode | keymap | effect |
 | --- | --- | --- |
