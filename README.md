@@ -157,6 +157,12 @@
 | --- | --- | --- |
 | normal | \<leader\>iht | toggle hardtime |
 
+### typr
+| mode | keymap | effect |
+| --- | --- | --- |
+| normal | \<leader\>mtt | open typr typing practice |
+| normal | \<leader\>mts | open typr stats |
+
 ### which-key
 | mode | keymap | effect |
 | --- | --- | --- |
