@@ -1,176 +1,217 @@
-# nvim
+<p align="center">
+  <img src="https://neovim.io/logos/neovim-logo-300x87.png" alt="Neovim" width="300">
+</p>
 
-## leader = " " (space)
+My personal Neovim config, written in Lua and managed with [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-## remaps
+- **Leader:** `<Space>`
+- **Colourscheme:** [nightfox](https://github.com/EdenEast/nightfox.nvim) (`duskfox`, toggles to `dayfox`)
+- **Forgot a keymap?** Press `<leader>` and wait, [which-key](https://github.com/folke/which-key.nvim) will show you the rest.
+
+## Install
+
+```sh
+# back up any existing config first
+mv ~/.config/nvim ~/.config/nvim.bak
+
+git clone https://github.com/W-E-Robinson/nvim ~/.config/nvim
+nvim
+```
+
+lazy.nvim bootstraps itself on first launch and installs everything pinned in `lazy-lock.json`. LSP servers and debug adapters are installed through [mason](https://github.com/williamboman/mason.nvim).
+
+## Layout
+
+```
+.
+├── init.lua              # entry point
+├── lazy-lock.json        # pinned plugin versions
+└── lua/
+    ├── config/
+    │   ├── lazy.lua      # lazy.nvim bootstrap + leader keys
+    │   ├── remap.lua     # core keymaps
+    │   ├── set.lua       # editor options
+    │   └── clipboard.lua
+    ├── plugins/          # one file per plugin spec
+    └── patches/          # workarounds for upstream issues
+```
+
+## Keymaps
+
+Mode key: **n** = normal, **v** = visual, **i** = insert.
+
+- [Core](#core)
+- [Finding things](#finding-things) — telescope, bufferlist, oil
+- [Code](#code) — lsp, nvim-cmp, comment
+- [Debugging & testing](#debugging--testing) — dap, neotest
+- [Git](#git) — nvim-git-blame, gitlinker
+- [Interface & misc](#interface--misc)
+
+### Core
+
+#### Files & splits
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>pv | enters vim explorer (:Ex) |
-| normal | \<leader\>H | horizontal explorer (:Hex) |
-| normal | \<leader\>V | vertical explorer (:Vex) |
-| normal | \<leader\>h; | clone current file into a horizontal split |
-| normal | \<leader\>v; | clone current file into a vertical split |
-| normal | \<leader\>o | close all splits except the one the cursor is in |
-| view | J | move code down once |
-| view | K | move code up once |
-| normal | J | bring code from below line up |
-| normal | Ctrl + c | write all and quit (:wqa) |
-| insert | Ctrl + c | write all and quit (:wqa) |
-| normal + visual | \<leader\>y | copy to system clipboard |
-| normal | \<leader\>Y | copy to system clipboard |
-| normal + visual | \<leader\>dv | deletes to blackhole register (the void) |
-| insert | Ctrl + f | writes open and closed curly braces and places cursor on line between
-| normal | \<leader\>sg | begin substitution (:%s) with current word + /g |
-| normal | \<leader\>sc | begin substitution (:%s) with current word + /gc |
-| normal | \<leader\>/ | begin search (/) with current word |
-| normal | \<leader\>\<leader\> | Source file |
-| normal | \<leader\>wai | yank file:line to system clipboard |
+| n | `<leader>pv` | open netrw explorer (`:Ex`) |
+| n | `<leader>H` | explorer in a horizontal split (`:Hex`) |
+| n | `<leader>V` | explorer in a vertical split (`:Vex`) |
+| n | `<leader>h;` | clone current file into a horizontal split |
+| n | `<leader>v;` | clone current file into a vertical split |
+| n | `<leader>o` | close every split except the current one |
+| n, i | `Ctrl-c` | write all and quit (`:wqa`) — refuses if a Rust file is open |
+| n | `<leader><leader>` | source current file |
+| n | `<leader>wai` | "where am I" — yank `file:line` to the system clipboard |
 
-## plugins
-### telescope
+#### Editing
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>pf | search files |
-| normal | \<leader\>pg | search files (only git tracked files) |
-| normal | \<leader\>pws | search word under cursor in current session |
-| normal | \<leader\>pWs | search WORD under cursor in current session (includes punctuation) |
-| normal | \<leader\>ps | grep search in current session |
-| normal | \<leader\>pS | grep search the last grep search |
-| normal | \<leader\>po | list recently opened directories/files |
-| normal | \<leader\>tb | list all buffers |
+| v | `J` / `K` | move selection down / up a line |
+| n | `J` | join line below, keeping the cursor in place |
+| n, v | `<leader>y` | yank to system clipboard |
+| n | `<leader>Y` | yank line to system clipboard |
+| n, v | `<leader>dv` | delete into the void (black hole register) |
+| i | `Ctrl-f` | insert `{ }` and put the cursor on a new line between them |
 
-### bufferlist
+#### Search & replace
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>l | open bufferlist |
+| n | `<leader>/` | search for the word under the cursor |
+| n | `<leader>sg` | substitute word under cursor across the file (`:%s/…/g`) |
+| n | `<leader>sc` | same, but confirm each one (`:%s/…/gc`) |
+| n | `n` / `N` | next / previous match, centred |
+| n | `Ctrl-d` / `Ctrl-u` | half-page down / up, centred |
 
-### lsp
+### Finding things
+
+#### [telescope](https://github.com/nvim-telescope/telescope.nvim)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>f | format code in file |
-| normal | gd | go to definition |
-| normal | gD | go to definition in vertical split |
-| normal | K | detail box |
-| normal | \<leader\>vd | view full error message |
-| normal | \<leader\>cd | see all warnings + errors in quickfix list |
-| normal | \<leader\>vca | view code actions |
-| normal | \<leader\>vrr | view references |
-| normal | \<leader\>vrn | rename |
-| normal | Ctrl + h | view calling function's information |
+| n | `<leader>pf` | find files |
+| n | `<leader>pg` | find git-tracked files |
+| n | `<leader>ps` | grep |
+| n | `<leader>pS` | repeat the last grep |
+| n | `<leader>pws` | grep for the word under the cursor |
+| n | `<leader>pWs` | grep for the WORD under the cursor (includes punctuation) |
+| n | `<leader>po` | recently opened files |
+| n | `<leader>tb` | list open buffers |
 
-### nvim-cmp
+#### [bufferlist](https://github.com/EL-MASTOR/bufferlist.nvim)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| insert | Ctrl + p | move up in list |
-| insert | Ctrl + n | move down in list |
-| insert | Ctrl + y | select in list |
-| insert | Ctrl + space | force complete to open |
+| n | `<leader>l` | open bufferlist |
 
-### colour
+#### [oil](https://github.com/stevearc/oil.nvim)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>ics | toggle dark and light mode |
+| n | `<leader>-` | open the parent directory in oil (or switch an explorer over to oil) |
 
-### comment
+### Code
+
+#### [lsp](https://github.com/neovim/nvim-lspconfig)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal + visual | \<leader\>gc | toggle line comment |
-| normal + visual | \<leader\>gb | toggle block comment |
+| n | `gd` | go to definition |
+| n | `gD` | go to definition in a vertical split |
+| n | `K` | hover docs |
+| n | `Ctrl-h` | signature help |
+| n | `<leader>f` | format buffer |
+| n | `<leader>vca` | code actions |
+| n | `<leader>vrr` | references |
+| n | `<leader>vrn` | rename |
+| n | `<leader>vd` | show the full diagnostic for this line |
+| n | `<leader>cd` | send all diagnostics to the quickfix list |
 
-### markdown preview
+#### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>mp | toggle markdown preview |
+| i | `Ctrl-n` / `Ctrl-p` | next / previous item |
+| i | `Ctrl-y` | accept item |
+| i | `Ctrl-Space` | open completion menu |
 
-### neotest
+#### [Comment](https://github.com/numToStr/Comment.nvim)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>nn | run nearest test |
-| normal | \<leader\>nf | run tests in current file |
-| normal | \<leader\>np | toggle output panel |
+| n, v | `<leader>gc` | toggle line comment |
+| n, v | `<leader>gb` | toggle block comment |
 
-### dap
+### Debugging & testing
+
+#### [dap](https://github.com/mfussenegger/nvim-dap)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>cb | attach debugger + debug continue |
-| normal | \<leader\>ss | debug step over |
-| normal | \<leader\>si | debug step into |
-| normal | \<leader\>so | debug step out |
-| normal | \<leader\>bd | debug toggle breakpoint |
-| normal | \<leader\>B | debug set condition breakpoint |
-| normal | \<leader\>dr | toggle repl ui |
-| normal | \<leader\>ds | show stacks |
-| normal | \<leader\>dw | show watches |
-| normal | \<leader\>dS | show scopes |
-| normal | \<leader\>dc | show console |
-| normal | \<leader\>db | show breakpoints |
+| n | `<leader>cb` | start debugger / continue |
+| n | `<leader>ss` | step over |
+| n | `<leader>si` | step into |
+| n | `<leader>so` | step out |
+| n | `<leader>bd` | toggle breakpoint |
+| n | `<leader>B` | set conditional breakpoint |
+| n | `<leader>dr` | toggle REPL |
+| n | `<leader>ds` | toggle stacks |
+| n | `<leader>dw` | toggle watches |
+| n | `<leader>dS` | toggle scopes |
+| n | `<leader>dc` | toggle console |
+| n | `<leader>db` | toggle breakpoints list |
 
-### undotree
+#### [neotest](https://github.com/nvim-neotest/neotest)
+
+Adapters: jest, python, rust, plenary.
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>u | view undo tree |
+| n | `<leader>nn` | run nearest test |
+| n | `<leader>nf` | run tests in current file |
+| n | `<leader>np` | toggle output panel |
 
-### oil
+### Git
+
+#### [nvim-git-blame](https://github.com/W-E-Robinson/nvim-git-blame)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>- | in file: open parent directory in oil file explorer, in explorer: change to oil file explorer |
+| n | `<leader>bcl` | blame current line |
 
-### claude
+#### [gitlinker](https://github.com/linrongbin16/gitlinker.nvim)
+
 | mode | keymap | effect |
 | --- | --- | --- |
-| normal | \<leader\>ac | toggle claude |
-| normal | \<leader\>af | focus claude |
-| normal | \<leader\>ar | resume claude |
-| normal | \<leader\>aC | continue claude |
-| normal | \<leader\>am | select claude model |
-| normal | \<leader\>ab | add current buffer |
-| visual | \<leader\>as | send to claude |
-| normal (file explorers) | \<leader\>as | add file |
-| normal | \<leader\>aa | accept diff |
-| normal | \<leader\>ad | deny diff |
+| n, v | `<leader>gy` | yank permalink to line/selection |
+| n, v | `<leader>gY` | open permalink in browser |
 
-### nvim-git-blame
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>bcl | git blame current line |
+### Interface & misc
 
-### git-linker
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>gy | yank git link |
-| visual | \<leader\>gy | yank git link |
-| normal | \<leader\>gY | open git link |
-| visual | \<leader\>gY | open git link |
+| plugin | mode | keymap | effect |
+| --- | --- | --- | --- |
+| [nightfox](https://github.com/EdenEast/nightfox.nvim) | n | `<leader>ics` | toggle dark / light |
+| [undotree](https://github.com/mbbill/undotree) | n | `<leader>u` | toggle undo tree |
+| [markdown-preview](https://github.com/iamcco/markdown-preview.nvim) | n | `<leader>mp` | toggle markdown preview |
+| [which-key](https://github.com/folke/which-key.nvim) | n | `<leader>?` | show buffer-local keymaps |
+| [screenkey](https://github.com/NStefan002/screenkey.nvim) | n | `<leader>sk` | toggle screenkey |
+| [hardtime](https://github.com/m4xshen/hardtime.nvim) | n | `<leader>iht` | toggle hardtime |
+| [typr](https://github.com/nvzone/typr) | n | `<leader>mtt` | typing practice |
+| [typr](https://github.com/nvzone/typr) | n | `<leader>mts` | typing stats |
+| [cellular-automaton](https://github.com/eandrju/cellular-automaton.nvim) | n | `<leader>mir` | make it rain 🌧️ |
+| [lazy.nvim](https://github.com/folke/lazy.nvim) | n | `<leader>;` | update plugins |
 
-### screenkey
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>sk | toggle screenkey |
+## Also installed
 
-### cellular-automaton
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>mir | make it rain |
+Plugins that work in the background, with no keymaps:
 
-### hardtime
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>iht | toggle hardtime |
-
-### typr
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>mtt | open typr typing practice |
-| normal | \<leader\>mts | open typr stats |
-
-### which-key
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>? | show buffer local keymaps |
-
-### lazy
-| mode | keymap | effect |
-| --- | --- | --- |
-| normal | \<leader\>; | update packages |
-
-[Inspiration](https://github.com/ThePrimeagen/init.lua).
+- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) — syntax highlighting
+- [lualine](https://github.com/nvim-lualine/lualine.nvim) — statusline
+- [winbar](https://github.com/ramilito/winbar.nvim) — file path in the winbar
+- [colorful-winsep](https://github.com/nvim-zh/colorful-winsep.nvim) — highlighted split borders
+- [smear-cursor](https://github.com/sphamba/smear-cursor.nvim) — animated cursor trail
+- [beacon](https://github.com/danilamihailov/beacon.nvim) — flash the cursor on big jumps
+- [matchparen](https://github.com/monkoose/matchparen.nvim) — faster matching-bracket highlights
+- [regexplainer](https://github.com/bennypowers/nvim-regexplainer) — explains the regex under the cursor
+- [vim-be-good](https://github.com/ThePrimeagen/vim-be-good) — motion practice games (`:VimBeGood`)
