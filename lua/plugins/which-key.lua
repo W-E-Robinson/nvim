@@ -8,7 +8,6 @@ return {
     -- prefixes that hold more than one mapping get a label here, otherwise
     -- which-key shows a bare "+prefix" for them
     spec = {
-      { "<leader>a", group = "AI/Claude Code" },
       { "<leader>b", group = "Blame/Breakpoint" },
       { "<leader>c", group = "Continue/Diagnostics" },
       { "<leader>d", group = "Debug UI/Delete" },
